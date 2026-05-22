@@ -3,7 +3,6 @@ package handlers
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 
@@ -91,7 +90,6 @@ func (h *Handler) UserTestPreferenceGet(w http.ResponseWriter, req *http.Request
 			w.WriteHeader(http.StatusNotFound)
 			return
 		}
-		fmt.Printf("%v", testObj)
 		data, err := json.Marshal(testObj)
 		if err != nil {
 			h.log.Error(ErrReadConfig(err))

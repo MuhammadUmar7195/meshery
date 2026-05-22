@@ -10,6 +10,9 @@ import (
 
 // PerformanceTestConfigValidator performs validations on the given PerformanceTestConfig object
 func PerformanceTestConfigValidator(perfTest *perfprofile.PerformanceTestConfig) error {
+	if perfTest == nil {
+		return ErrField
+	}
 	if perfTest.Name == "" {
 		return ErrField
 	}

@@ -20,7 +20,12 @@ type SMPMeshes struct {
 // the legacy, fixed service-mesh enum, so users can target any registered
 // model and are not constrained to service-mesh technologies.
 func (h *Handler) GetSMPServiceMeshes(w http.ResponseWriter, _ *http.Request, _ *models.Preference, _ *models.User, _ models.Provider) {
-	entities, _, _, _ := h.registryManager.GetEntities(&regv1beta1.ModelFilter{})
+	entities, _, _, err := h.registryManager.GetEntities(&regv1beta1.ModelFilter{})
+	if err != nil {
+		h.log.Error(ErrRetrieveData(err))
+		writeMeshkitError(w, ErrRetrieveData(err), http.StatusInternalServerError)
+		return
+	}
 
 	seen := make(map[string]struct{})
 	meshes := SMPMeshes{
