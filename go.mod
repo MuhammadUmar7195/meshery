@@ -42,13 +42,12 @@ require (
 	github.com/grafana-tools/sdk v0.0.0-20220919052116-6562121319fc
 	github.com/jarcoal/httpmock v1.4.1
 	github.com/jinzhu/copier v0.4.0
-	github.com/layer5io/service-mesh-performance v0.6.1
 	github.com/lib/pq v1.12.1
 	github.com/manifoldco/promptui v0.9.0
 	github.com/meshery/meshery-operator v0.8.11
 	github.com/meshery/meshkit v1.0.8
 	github.com/meshery/meshsync v1.0.0
-	github.com/meshery/schemas v1.2.22
+	github.com/meshery/schemas v1.2.24-0.20260522041020-7f513e18a88d
 	github.com/nsf/termbox-go v1.1.1
 	github.com/oapi-codegen/runtime v1.4.0
 	github.com/olekukonko/tablewriter v1.1.4

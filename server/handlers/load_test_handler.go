@@ -19,7 +19,6 @@ import (
 	yaml "github.com/ghodss/yaml"
 	"github.com/gofrs/uuid"
 	"github.com/gorilla/mux"
-	SMP "github.com/layer5io/service-mesh-performance/spec"
 	"github.com/meshery/meshery/server/helpers"
 	"github.com/meshery/meshery/server/helpers/utils"
 	"github.com/meshery/meshery/server/models"
@@ -68,10 +67,11 @@ func (h *Handler) LoadTestUsingSMPHandler(w http.ResponseWriter, req *http.Reque
 		return
 	}
 
-	meshType := perfTest.ServiceMesh.Type
-	meshName := SMP.ServiceMesh_Type_name[int32(meshType)]
+	// The technology under test is identified by a Meshery Registry model
+	// name (free-form string), replacing the constraining SMP service-mesh enum.
+	meshName := perfTest.ServiceMesh
 
-	profileID := perfTest.Config.Id
+	profileID := perfTest.Config.ID
 
 	loadTestOptions := &models.LoadTestOptions{}
 
