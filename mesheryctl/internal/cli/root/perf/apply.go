@@ -123,7 +123,7 @@ mesheryctl perf apply meshery-profile-new --url "https://google.com" --load-gene
 				return ErrFailUnmarshalFile(err)
 			}
 
-			if testConfig.Config == nil {
+			if testConfig.Config == nil || len(testConfig.Config.Clients) == 0 {
 				return ErrInvalidTestConfigFile()
 			}
 
